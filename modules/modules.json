@@ -1748,62 +1748,32 @@
     },
     "methods": [
       {
-        "value": "CurrentPageTotal",
-        "label": "CurrentPageTotal(pagination *domain.Pagination, entities []interface{}) (r domain.FlowStepResult)",
-        "names": "CurrentPageTotal(pagination, entities) r",
-        "types": "CurrentPageTotal(*domain.Pagination, []interface{}) domain.FlowStepResult",
-        "description": "Function with 2 input(s) and 1 output(s)",
+        "value": "BuildPaginationMeta",
+        "label": "BuildPaginationMeta(offset int, limit int, total interface{}) (r domain.FlowStepResult)",
+        "names": "BuildPaginationMeta(offset, limit, total) r",
+        "types": "BuildPaginationMeta(int, int, interface{}) domain.FlowStepResult",
+        "description": "Function with 3 input(s) and 1 output(s)",
         "method": {
           "go_module": "github.com/kuetix/std-core",
           "file_path": "modules/services/common/transitions/pagination.go",
           "module_path": "modules",
           "namespace": "services/common",
           "class": "pagination",
-          "name": "CurrentPageTotal",
+          "name": "BuildPaginationMeta",
           "receiver_type": "*paginationTransitions",
-          "num_in": 2,
+          "num_in": 3,
           "num_out": 1,
           "arg_types": [
-            "*domain.Pagination",
-            "[]interface{}"
+            "int",
+            "int",
+            "interface{}"
           ],
           "return_types": [
             "domain.FlowStepResult"
           ],
           "arg_names": [
-            "pagination",
-            "entities"
-          ],
-          "return_names": [
-            "r"
-          ]
-        }
-      },
-      {
-        "value": "PaginationTotal",
-        "label": "PaginationTotal(pagination *domain.Pagination, total int) (r domain.FlowStepResult)",
-        "names": "PaginationTotal(pagination, total) r",
-        "types": "PaginationTotal(*domain.Pagination, int) domain.FlowStepResult",
-        "description": "Function with 2 input(s) and 1 output(s)",
-        "method": {
-          "go_module": "github.com/kuetix/std-core",
-          "file_path": "modules/services/common/transitions/pagination.go",
-          "module_path": "modules",
-          "namespace": "services/common",
-          "class": "pagination",
-          "name": "PaginationTotal",
-          "receiver_type": "*paginationTransitions",
-          "num_in": 2,
-          "num_out": 1,
-          "arg_types": [
-            "*domain.Pagination",
-            "int"
-          ],
-          "return_types": [
-            "domain.FlowStepResult"
-          ],
-          "arg_names": [
-            "pagination",
+            "offset",
+            "limit",
             "total"
           ],
           "return_names": [
@@ -1869,6 +1839,168 @@
           "arg_names": [
             "pagination",
             "total"
+          ],
+          "return_names": [
+            "r"
+          ]
+        }
+      },
+      {
+        "value": "CurrentPageTotal",
+        "label": "CurrentPageTotal(pagination *domain.Pagination, entities []interface{}) (r domain.FlowStepResult)",
+        "names": "CurrentPageTotal(pagination, entities) r",
+        "types": "CurrentPageTotal(*domain.Pagination, []interface{}) domain.FlowStepResult",
+        "description": "Function with 2 input(s) and 1 output(s)",
+        "method": {
+          "go_module": "github.com/kuetix/std-core",
+          "file_path": "modules/services/common/transitions/pagination.go",
+          "module_path": "modules",
+          "namespace": "services/common",
+          "class": "pagination",
+          "name": "CurrentPageTotal",
+          "receiver_type": "*paginationTransitions",
+          "num_in": 2,
+          "num_out": 1,
+          "arg_types": [
+            "*domain.Pagination",
+            "[]interface{}"
+          ],
+          "return_types": [
+            "domain.FlowStepResult"
+          ],
+          "arg_names": [
+            "pagination",
+            "entities"
+          ],
+          "return_names": [
+            "r"
+          ]
+        }
+      },
+      {
+        "value": "ResolvePageParams",
+        "label": "ResolvePageParams(offsetParam string, limitParam string) (r domain.FlowStepResult)",
+        "names": "ResolvePageParams(offsetParam, limitParam) r",
+        "types": "ResolvePageParams(string, string) domain.FlowStepResult",
+        "description": "Function with 2 input(s) and 1 output(s)",
+        "method": {
+          "go_module": "github.com/kuetix/std-core",
+          "file_path": "modules/services/common/transitions/pagination.go",
+          "module_path": "modules",
+          "namespace": "services/common",
+          "class": "pagination",
+          "name": "ResolvePageParams",
+          "receiver_type": "*paginationTransitions",
+          "num_in": 2,
+          "num_out": 1,
+          "arg_types": [
+            "string",
+            "string"
+          ],
+          "return_types": [
+            "domain.FlowStepResult"
+          ],
+          "arg_names": [
+            "offsetParam",
+            "limitParam"
+          ],
+          "return_names": [
+            "r"
+          ]
+        }
+      },
+      {
+        "value": "BuildPaginationMeta",
+        "label": "BuildPaginationMeta(offset int, limit int, total interface{}) (r domain.FlowStepResult)",
+        "names": "BuildPaginationMeta(offset, limit, total) r",
+        "types": "BuildPaginationMeta(int, int, interface{}) domain.FlowStepResult",
+        "description": "Function with 3 input(s) and 1 output(s)",
+        "method": {
+          "go_module": "github.com/kuetix/std-core",
+          "file_path": "modules/services/common/transitions/pagination.go",
+          "module_path": "modules",
+          "namespace": "services/common",
+          "class": "pagination",
+          "name": "BuildPaginationMeta",
+          "receiver_type": "*paginationTransitions",
+          "num_in": 3,
+          "num_out": 1,
+          "arg_types": [
+            "int",
+            "int",
+            "interface{}"
+          ],
+          "return_types": [
+            "domain.FlowStepResult"
+          ],
+          "arg_names": [
+            "offset",
+            "limit",
+            "total"
+          ],
+          "return_names": [
+            "r"
+          ]
+        }
+      },
+      {
+        "value": "PaginationTotal",
+        "label": "PaginationTotal(pagination *domain.Pagination, total int) (r domain.FlowStepResult)",
+        "names": "PaginationTotal(pagination, total) r",
+        "types": "PaginationTotal(*domain.Pagination, int) domain.FlowStepResult",
+        "description": "Function with 2 input(s) and 1 output(s)",
+        "method": {
+          "go_module": "github.com/kuetix/std-core",
+          "file_path": "modules/services/common/transitions/pagination.go",
+          "module_path": "modules",
+          "namespace": "services/common",
+          "class": "pagination",
+          "name": "PaginationTotal",
+          "receiver_type": "*paginationTransitions",
+          "num_in": 2,
+          "num_out": 1,
+          "arg_types": [
+            "*domain.Pagination",
+            "int"
+          ],
+          "return_types": [
+            "domain.FlowStepResult"
+          ],
+          "arg_names": [
+            "pagination",
+            "total"
+          ],
+          "return_names": [
+            "r"
+          ]
+        }
+      },
+      {
+        "value": "ResolvePageParams",
+        "label": "ResolvePageParams(offsetParam string, limitParam string) (r domain.FlowStepResult)",
+        "names": "ResolvePageParams(offsetParam, limitParam) r",
+        "types": "ResolvePageParams(string, string) domain.FlowStepResult",
+        "description": "Function with 2 input(s) and 1 output(s)",
+        "method": {
+          "go_module": "github.com/kuetix/std-core",
+          "file_path": "modules/services/common/transitions/pagination.go",
+          "module_path": "modules",
+          "namespace": "services/common",
+          "class": "pagination",
+          "name": "ResolvePageParams",
+          "receiver_type": "*paginationTransitions",
+          "num_in": 2,
+          "num_out": 1,
+          "arg_types": [
+            "string",
+            "string"
+          ],
+          "return_types": [
+            "domain.FlowStepResult"
+          ],
+          "arg_names": [
+            "offsetParam",
+            "limitParam"
           ],
           "return_names": [
             "r"
