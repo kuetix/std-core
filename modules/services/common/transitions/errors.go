@@ -18,12 +18,28 @@ func NewErrorsTransitions() interfaces.ServiceTransitions {
 	return &errorsTransitions{}
 }
 
+// OnErrorHook, when non-nil, is called from OnAnyError with the cleaned
+// error message and the workflow it failed in. This package is reusable
+// across consumers, so it never picks an error-tracking vendor itself -
+// a consuming binary wires its own sink (e.g. Sentry) into this hook at
+// startup, the same composable package-level-hook shape std-http's
+// ServerHandlerWrapper already uses. nil (the default) is a no-op, so a
+// binary that never sets it behaves exactly as before.
+var OnErrorHook func(msg string, workflow string)
+
 func (et *errorsTransitions) OnAnyError(msg string, statusCode int) (r domain.FlowStepResult) {
 	et.SetStatusCode(statusCode)
 	res := et.Ctx.Worker.GetWorkerResponse()
 	issues := res.GetError()
 	if issues != nil {
 		msg = issues.Error()
+	}
+	if OnErrorHook != nil {
+		workflowName := ""
+		if et.Ctx != nil && et.Ctx.Flow != nil {
+			workflowName = et.Ctx.Flow.Name
+		}
+		OnErrorHook(msg, workflowName)
 	}
 	et.Ctx.Worker.CleanErrors()
 	et.SetValue("error", map[string]interface{}{"message": msg})
